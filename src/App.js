@@ -1,6 +1,6 @@
 import './App.css';
 import Popup from './Pages/Popup';
-
+import { MdArrowBackIos } from 'react-icons/md'
 
 
 
@@ -8,15 +8,17 @@ function App() {
   return (
     <div className="App">
 
-    <nav class="navbar bg-primary">
+    <nav class="navbar bg-info">
       <div class="container-fluid">
-        
-        <h4>View Audience</h4>
+        <div className="app-head">
+          <MdArrowBackIos/>
+          <h5>View Audience</h5>
+        </div>
       </div>
     </nav>
       <div class="butto">  
-      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Segment
+      <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Save Segment
       </button>
       </div>
 

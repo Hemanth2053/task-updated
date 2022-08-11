@@ -2,6 +2,8 @@
 import "./Popup.css";
 import { useState } from "react";
 import axios from 'axios';
+import { MdArrowBackIos } from 'react-icons/md'
+import CircleIcon from '@mui/icons-material/Circle';
 
 const Dummy_data = [
     { Lable: "First Name", Value: "first_name", showing: true, selected: true },
@@ -48,6 +50,7 @@ function App() {
             }
         });
         setData(changeData);
+        
     };
 
     const handleRemoveSegment = (label) => {
@@ -75,20 +78,41 @@ function App() {
 
 
 
+
     return (
         <div className="comp">
-            <h5>Saving Segment</h5>
+            <div className="lab-cont">
+            <div className="head-comp">
+                <i data-bs-dismiss="modal">
+                    <MdArrowBackIos/>
+                </i>
+                <h5>Saving Segment</h5>
+                
+            </div>
             <label>Enter the name of the segment</label>
             <input placeholder="Segment Name"
                 onChange={(e) => setSegmantName(e.target.value)}
             ></input>
             <p>To save your segment you need to add your schemas to build the query</p>
+            </div>
+            <div className="bullet">
+                <div className="bullet-in">
+                    <CircleIcon sx={{ fontSize: 15, color: "greenyellow", marginTop: "7px"}}  />
+                    <p> - User Traits</p>
+                </div>
+                <div className="bullet-in">
+                    <CircleIcon sx={{ fontSize: 15, color: "rosybrown", marginTop: "7px" }}  />
+                    <p> - Group Traits</p>
+                </div>
+            </div>
             <form>
                 {data
                     .filter((d) => d.showing === true)
                     .map((d) => (
                         <div className="cont" key={d.Lable}>
+                            
                             <select className="sel" onChange={handleChange} name={d.Value}>
+                                
                                 <option>{d.Lable}</option>
                                 {data
                                     .filter((f) => !Object.keys(segmanetData).includes(f.Lable))
@@ -103,19 +127,20 @@ function App() {
 
             <form onSubmit={handleSchemaSubmit}>
                 <select className="form-cont" onChange={(e) => setAddNewSchema(e.target.value)}>
-                    {data.map((d) => (
+                    {data.filter((a) => a.showing === false )
+                    .map((d) => (
                         <option className="sel" key={d.Lable}>{d.Lable}</option>
                     ))}
                 </select>
 
                 <a>
-                    <button className="btn-one" type="submit">+Add new schema</button>
+                    <button className="btn-schema" type="submit">+Add new schema</button>
                 </a>
 
             </form>
             <div className="btn-cont">
                 <button className="btn-two" onClick={(e) => handleSegmentSave(e)}>Save the segment</button>
-                <button className="btn-three">Cancel</button>
+                <button className="btn-three" data-bs-dismiss="modal">Cancel</button>
             </div>
         </div>
     );

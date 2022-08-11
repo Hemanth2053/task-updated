@@ -1,3 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&family=Roboto:wght@300;400;500&display=swap');
+
 .butto{
   margin: 12rem 7rem;
+  padding: 10px;
+  border: 1px solid;
+  color: #fff;
+}
+
+
+.app-head{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-left: 1rem;
+  align-items: center;
+  color: #fff;
+}
+
+.app-head h5 {
+  margin-top: 7px;
+  
 }
